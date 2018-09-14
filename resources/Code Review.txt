@@ -1,0 +1,39 @@
+========== DESIGN CRITIQUE ==========
+The design is fairly straight forward with some flaws but easy usability. All the views have a concrete
+reference to the model interface that uses its getters to convert the model to the view. This has a few better options:
+give the model to the controller to pass the shapes or to make an adapter to the model that limits the mutation options.
+Also, there are an excessive amount of classes and interfaces that could be combined to classes that do the same thing.
+For example, there are classes that represent all the shape properties when normally shape properties could be directly
+taken out of a shape through a visitor. In addition, the views all concretely reference the instances of that class by
+using either instance of or by using ShapePosn.class or ShapeDimensions.class to represent the shape. Other than that,
+the views only refer to the model interface methods.
+
+========== IMPLEMENTATION CRITIQUE ==========
+Implementation was fairly simple: make adapters for all the model, shape, and transition interfaces. This was the
+best part of the code because the views only used those interfaces. Making those adapters allowed us to use our models
+and shapes to directly represent their models and shapes. With our easy to use visitors, being able to convert our
+shapes and transitions to their shapes and transitions was incredibly straightforward. If anything, the hardest part
+was simply understanding how all of the views worked and what methods and interfaces the views needed. After that,
+writing the adapters was clean and fast.
+
+========== DOCUMENTATION CRITIQUE ===========
+The documentation on the code was very good if not almost perfect. Every method and every interface was documented
+and understanding what each method did what was very easy. This posed no possible problems and made everything
+understandable without actually contacting the providers. The only issue we came with was the specific documentation
+behind getName() method on the EasyObject. The exact documentation says "Returns a type-friendly name of the object.",
+however this actually either returns "rectangle" or "oval" as opposed to the actual shape's name. Also, the views
+have large blocks of code without much documentation, making it hard to follow what it actually did. However,
+view implementation details were not necessary to actually adapt the models, so it did not have much impact. Other
+than that, very good job on the documentation.
+
+========== DESIGN/CODE LIMITATIONS AND SUGGESTIONS ============
+Some suggestions are that some methods and classes are included without actually being used, for eample containsPos
+method. It would better for the user and customers if these unused methods are commented out without being required
+to override or implement. In addition, it would be better to use the visitor pattern to make all forms of type-checking
+cleaner. Currently, all the views either use Class<A> to act as type checking or instance of. Without these concrete
+classes in the views, the code would be a lot cleaner and more organized. Finally, the large blocks of code in the views
+should be documented to explain how they exactly worked.
+
+========== REQUESTED CHANGES ===========
+There were some bugs involving not initializing some fields, resulting in null pointers or svg that looks along the lines
+of "begin=null15.05s". A simple request had those initialization bugs fixed quickly enough.

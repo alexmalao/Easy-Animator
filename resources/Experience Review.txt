@@ -1,0 +1,18 @@
+========= DESIGN/IMPLEMENTATION =========
+Most of our model and visitor implementations were as intended and did not require any changes.
+Given another opportunity to change the code, we still would have kept the model and the
+visitors for the model exactly the same. However, we would change our controller to deal
+with action listeners and giving the shapes to the views. Currently, the views have a model
+adapter that restricts mutation for the view and the view also implements ActionListener
+and ItemListener. The better option would be to make the controller do all of that. The code
+given to us taught us how exactly to work with implementing adapters with only documentation.
+This showed how important the specifics of documentation is to others, not just to the code writer.
+We did not get any response from our customers, so we presume our customers did run into big issues
+with our design.
+
+========= PROVIDER EXPERIENCE =========
+Our providers provided us with our code very early on without request. However, upon needing
+more essential parts of the view, we sent an email to all three of their members requesting
+the code on Thursday, only to receive the code on Saturday. This greatly took away from the
+time we could work on the assignment. Emailing them again for bugs at a later time had a
+quicker response with fairly fast bug fixes.
